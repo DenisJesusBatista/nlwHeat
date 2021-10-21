@@ -1,4 +1,5 @@
 import axios from "axios";
+import prismaClient from "../prisma";
 
 /**
  * Receber code(string)
@@ -17,10 +18,10 @@ interface IAccessTokenResponse {
 }
 
 interface IUserResponse {
-    avatar_url: string;
-    login: string;
-    id: number;
-    name: string;
+    avatar_url: string,
+    login: string,
+    id: number,
+    name: string
 }
 
 class AuthenticateUserService {
@@ -48,6 +49,10 @@ class AuthenticateUserService {
             }
         });
 
+
+        const { login, id, avatar_url, name } = response.data;
+
+        const user = await prismaClient.
 
 
 
